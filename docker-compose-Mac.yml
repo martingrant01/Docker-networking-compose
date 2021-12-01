@@ -1,0 +1,44 @@
+version: '3'
+services:
+  nginx-flask:
+    build:
+      context: ./FilesForImages/flasknginxImage/
+      dockerfile: flasknginxapp.Dockerfile
+    image: 003235076673.dkr.ecr.eu-central-1.amazonaws.com/dockerbuild:latest
+    networks:
+      - bridge
+      - vip-clients
+    ports:
+      - 80:80
+  secret-alpine:
+    build:
+      context: ./FilesForImages/secretImage/
+      dockerfile: secret.Dockerfile
+    image: alpinesecret
+    network_mode: "none"
+  client-1:
+    image: alpine
+    command: tail -f /dev/null
+    networks:
+      - bridge
+  client-2:
+    image: alpine
+    command: tail -f /dev/null
+    networks:
+      - bridge
+  vipclient-1:
+    image: alpine
+    command: tail -f /dev/null
+    networks:
+      - vip-clients
+  vipclient-2:
+    image: alpine
+    command: tail -f /dev/null
+    networks:
+      - vip-clients
+  
+networks:
+  bridge:
+    driver: bridge
+  vip-clients:
+    driver: bridge
