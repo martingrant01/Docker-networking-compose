@@ -16,10 +16,10 @@ As for the webserver part, the webserver is going to run on host machines port 8
 ## How to use the repository
 1. Make sure you are located inside the repository.
     - ls command should look like this --> FilesForImages     Howtouse.md        README.md          docker-compose.yml
-2. Run the command docker-compose up -d
+2. Run the command docker-compose up -d for Linux version, for Mac use docker-compose -f docker-compose-Mac.yml up -d
     - This will start all the containers in the background so you're terminal stays ready for use.
 3. (Optional) To get into one of the clients role
     - Run docker ps/ docker-compose ps to see the name of your containers
     - Run docker exec -it {container_name} sh --> This command will start sh inside alpine container so you can act like it was a Linux machine.
 4. On the machine you are running Docker on, you should see the website in your browser under http://localhost.
-5. Run docker-compose down when you'd like to remove all containers created previously.
+5. Run docker-compose down when you'd like to remove all containers created previously on Linux, on Mac use docker-compose -f docker-compose-Mac.yml down.
